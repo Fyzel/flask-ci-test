@@ -1,4 +1,5 @@
 from flask import Flask
+from os import environ
 
 
 #######################
@@ -13,6 +14,7 @@ from flask import Flask
 def create_app(config_filename=None):
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_pyfile(config_filename)
+    app.secret_key = environ['FLASK_SECRET_KEY']
     initialize_extensions(app)
     register_blueprints(app)
     return app
