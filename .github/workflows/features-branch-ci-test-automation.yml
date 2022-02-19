@@ -42,9 +42,9 @@ jobs:
           git config --local user.name "Github Actions"
       - name: Merge features to features-test
         run: |
+          # auto merge to the test branch on successful tests
           git fetch --unshallow
           git checkout features-test
           git pull
           git merge --no-ff features -m "Auto-merge features to features-test"
           git push
-
