@@ -1,13 +1,8 @@
-"""
-Base app
-"""
+# Example from https://gitlab.com/patkennedy79/flask_user_management_example
+# and https://testdriven.io/blog/flask-pytest/
 
-from flask import Flask
+from project import create_app
 
-app = Flask(__name__)
-
-
-@app.route("/")
-def hello_world():
-    """Default method -- hello_world"""
-    return "<p>Hello, World!</p>"
+# Call the application factory function to construct a Flask application
+# instance using the development configuration
+app = create_app('flask.cfg')
