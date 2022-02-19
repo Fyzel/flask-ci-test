@@ -36,3 +36,15 @@ jobs:
           FLASK_SECRET_KEY: ${{ secrets.FLASK_SECRET_KEY_TEST }}
         run: |
           pytest --import-mode=append tests/
+      - name: Set Git config
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "Github Actions"
+      - name: Merge features to features-test
+        run: |
+          git fetch --unshallow
+          git checkout features-test
+          git pull
+          git merge --no-ff features -m "Auto-merge features to features-test"
+          git push
+
