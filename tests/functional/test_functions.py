@@ -4,7 +4,7 @@ This file (test_functions.py) contains the functional tests for the project.
 These tests use GETs and POSTs to different URLs to check for the proper behavior
 of the blueprint.
 """
-import project
+from project import create_app
 
 
 def test_home_page():
@@ -13,7 +13,7 @@ def test_home_page():
     WHEN the '/' page is requested (GET)
     THEN check that the response is valid
     """
-    flask_app = project.create_app()
+    flask_app = create_app()
 
     # Create a test client using the Flask application configured for testing
     with flask_app.test_client() as test_client:
