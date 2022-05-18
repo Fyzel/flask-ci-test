@@ -22,12 +22,9 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Running curl to test TLS1.2
 
       # Runs a set of commands using the runners shell
       - name: Run curl to test TLS 1.2
         run: |
-          echo echo Running curl to test TLS1.2
-          curl --tlsv1.2 https://fyzel.com/
+          echo "Running curl to test TLS1.2"
+          curl --tlsv1.2 https://fyzel.com/ -s -o /dev/null
