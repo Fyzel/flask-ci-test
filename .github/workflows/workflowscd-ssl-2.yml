@@ -25,7 +25,7 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Run curl to test SSL 2
-        run:
+        run: |
           echo "Running curl to test SSL 2"
           set +e
           /usr/bin/curl --sslv2 https://fyzel.com/ -s -o /dev/null
