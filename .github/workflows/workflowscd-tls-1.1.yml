@@ -28,7 +28,7 @@ jobs:
         run: |
           echo "Running curl to test TLS 1.1"
           set +e
-          /usr/bin/curl --tlsv1.1 https://fyzel.com/ -s -o /dev/null
+          /usr/bin/curl --tlsv1.1 --tls-max 1.1 https://fyzel.com/ -s -o /dev/null
           status=$?
           echo "curl exit status: $status"
           if [[ $status -ne 0 ]]; then
