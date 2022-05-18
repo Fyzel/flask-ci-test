@@ -27,5 +27,4 @@ jobs:
       - name: Run curl to test SSL 2
         run: |
           echo "Running curl to test SSL 2"
-          which curl
-          [ `/usr/bin/curl --sslv2 https://fyzel.com/ -s -o /dev/null` -ne 0 ]
+          [ `/usr/bin/curl --sslv2 https://fyzel.com/ -s -o /dev/null` -ne "0" ]
