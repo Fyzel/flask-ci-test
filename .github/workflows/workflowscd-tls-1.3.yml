@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Test TLS 1.2 - requires support
+name: Test TLS 1.3 - requires support
 
 # Controls when the workflow will run
 on:
@@ -24,7 +24,7 @@ jobs:
     steps:
 
       # Runs a set of commands using the runners shell
-      - name: Run curl to test TLS 1.2
+      - name: Run curl to test TLS 1.3
         run: |
-          echo "Running curl to test TLS1.2"
-          curl --tlsv1.2 https://fyzel.com/ -s -o /dev/null
+          echo "Running curl to test TLS1.3"
+          curl --tlsv1.3 https://fyzel.com/ -s -o /dev/null
