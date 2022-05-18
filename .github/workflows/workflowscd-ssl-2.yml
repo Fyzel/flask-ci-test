@@ -25,14 +25,12 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Run curl to test SSL 2
-        run: |
-          check_ssl_v2() {
-            echo "Running curl to test SSL 2"
-            output=`/usr/bin/curl --sslv2 https://fyzel.com/ -s -o /dev/null`
-            if [[ $? -ne 0 ]]; then
-            	exit 0
-            else
-              exit 1
-            fi
-          }
-          check_ssl_v2
+        run:
+          echo "Running curl to test SSL 2"
+          set +e
+          /usr/bin/curl --sslv2 https://fyzel.com/ -s -o /dev/null
+          if [[ $? -ne 0 ]]; then
+            exit 0
+          else
+            exit 1
+          fi
