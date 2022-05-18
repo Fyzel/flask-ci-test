@@ -26,5 +26,11 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run curl to test TLS 1.2
         run: |
-          echo "Running curl to test TLS1.2"
-          curl --tlsv1.2 https://fyzel.com/ -s -o /dev/null
+          echo "Running curl to test TLS 1.2"
+          set +e
+          /usr/bin/curl --tlsv1.2 https://fyzel.com/ -s -o /dev/null
+          if [[ $? -ne 0 ]]; then
+            exit 0
+          else
+            exit 1
+          fi
