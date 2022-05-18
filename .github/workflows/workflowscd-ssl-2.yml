@@ -28,7 +28,7 @@ jobs:
         run: |
           check_ssl_v2() {
             echo "Running curl to test SSL 2"
-            /usr/bin/curl --sslv2 https://fyzel.com/ -s -o /dev/null
+            output=`/usr/bin/curl --sslv2 https://fyzel.com/ -s -o /dev/null`
             if [[ $? -ne 0 ]]; then
             	exit 0
             else
