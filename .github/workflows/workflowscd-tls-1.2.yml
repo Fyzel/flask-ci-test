@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Test TLS v1.2 - expect no support
+name: Test TLS v1.2 - requires support
 
 # Controls when the workflow will run
 on:
@@ -27,10 +27,4 @@ jobs:
       - name: Run curl to test TLS 1.2
         run: |
           echo "Running curl to test TLS 1.2"
-          set +e
           /usr/bin/curl --tlsv1.2 --tls-max 1.2 https://fyzel.com/ -s -o /dev/null
-          if [[ $? -ne 0 ]]; then
-            exit 0
-          else
-            exit 1
-          fi
