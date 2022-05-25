@@ -23,11 +23,15 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       
-      # Runs a set of commands using the runners shell
-      - name: Run Mozilla Observatory with a minimum score of B+
-        run: |
-          echo "Installing Mozilla Observatory"
-          npm install -g observatory-cli
-          
-          echo "Running Mozilla Observatory"
-          observatory https://fyzel.com/ --min-grade B+
+      - uses: actions/checkout@v3
+
+      - name: Test Observatory
+        uses: simonireilly/observatory-github-action@v0.1.0
+        id: observatory
+        with:
+          web_host: https://fyzel.com
+
+      - name: Create commit comment
+        uses: fyzel/commit-comment@v1
+        with:
+          body: "# Branch PR ${{ steps.observatory.outputs.observatory-report }}"
