@@ -25,4 +25,5 @@ jobs:
       
       - name: Run SSL Labs
         run: |
+          go env
           ssllabs-scan --grade --verbosity https://fyzel.com/
