@@ -26,5 +26,6 @@ jobs:
       - name: Run SSL Labs
         run: |
           set +e
+          ls -la /home/runner/work/_temp/
           go env
           ssllabs-scan --grade --verbosity https://fyzel.com/
