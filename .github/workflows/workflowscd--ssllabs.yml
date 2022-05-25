@@ -13,20 +13,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: '>=1.17.0'
+          
       - name: Checkout SSL Labs
         uses: actions/checkout@v3
         with:
           repository: ssllabs/ssllabs-scan
           path: './ssllabs-scan'
-
-      - name: Set up Go
-        uses: actions/setup-go@v3
-        with:
-          go-version: '>=1.17.0'
       
       - name: Run SSL Labs
         run: |
           set +e
           ls -la ./ssllabs-scan
           go env
-          ./ssllabs-scan/ssllabs-scan.go --grade --verbosity https://fyzel.com/
+          ./ssllabs-scan/ssllabs-scan-v3.go --grade --verbosity https://fyzel.com/
