@@ -28,4 +28,5 @@ jobs:
         run: |
           set +e
           ls -la ./ssllabs-scan
-          go ./ssllabs-scan/ssllabs-scan-v3.go --grade --verbosity https://fyzel.com/
+          chmod u+x ./ssllabs-scan/ssllabs-scan-v3.go
+          ./ssllabs-scan/ssllabs-scan-v3.go --grade --verbosity https://fyzel.com/
