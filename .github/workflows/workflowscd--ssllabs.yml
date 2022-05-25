@@ -1,0 +1,28 @@
+# 
+name: Test static website with SSL Labs
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout SSL Labs
+        uses: actions/checkout@v3
+        with:
+          repository: ssllabs/ssllabs-scan
+
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: '>=1.17.0'
+      
+      - name: Run SSL Labs
+        run: |
+          go ssllabs-scan --grade --verbosity https://fyzel.com/
