@@ -27,6 +27,4 @@ jobs:
       - name: Run SSL Labs
         run: |
           set +e
-          ls -la ./ssllabs-scan
-          chmod u+x ./ssllabs-scan/ssllabs-scan-v3.go
           go run ssllabs-scan/ssllabs-scan-v3.go --grade --quiet https://fyzel.com/
